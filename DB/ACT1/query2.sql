@@ -18,7 +18,7 @@ CREATE TABLE coches (
     marca VARCHAR(20) NOT NULL,
     modelo VARCHAR(10) UNIQUE,
     nuevo BOOLEAN DEFAULT TRUE,
-    precio INT CHECK (precio >= 1000 AND precio <= 30000),
+    precio DECIMAL(5.2) CHECK (precio >= 1000 AND precio <= 30000),
     dni VARCHAR(9),
     FOREIGN KEY (dni)
         REFERENCES propietarios (dni)
