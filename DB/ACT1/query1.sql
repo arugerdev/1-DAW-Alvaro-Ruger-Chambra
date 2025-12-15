@@ -4,33 +4,33 @@ CREATE DATABASE bibliotecaNuevo;
 USE bibliotecaNuevo;
 
 CREATE TABLE autor (
-    claveautor INT UNIQUE NOT NULL PRIMARY KEY,
-    nombre VARCHAR(60)
+    claveautor INT(11) UNIQUE NOT NULL PRIMARY KEY,
+    nombre VARCHAR(20)
 );
 
 CREATE TABLE editorial (
     claveeditorial SMALLINT(6) UNIQUE NOT NULL PRIMARY KEY,
-    nombre VARCHAR(60),
-    direccion VARCHAR(60),
-    telefono VARCHAR(15)
+    nombre VARCHAR(20),
+    direccion VARCHAR(50),
+    telefono CHAR(9)
 );
 
 CREATE TABLE socio (
     clavesocio INT(11) UNIQUE NOT NULL PRIMARY KEY,
-    nombre VARCHAR(60),
-    direccion VARCHAR(60),
-    telefono VARCHAR(15),
+    nombre VARCHAR(20),
+    direccion VARCHAR(50),
+    telefono CHAR(9),
     categoria CHAR(1)
 );
 
 CREATE TABLE tema (
     clavetema SMALLINT(6) UNIQUE NOT NULL PRIMARY KEY,
-    nombre VARCHAR(40)
+    nombre VARCHAR(20)
 );
 
 CREATE TABLE libro (
     clavelibro INT(11) UNIQUE NOT NULL PRIMARY KEY,
-    titulo VARCHAR(60),
+    titulo VARCHAR(30),
     idioma VARCHAR(15),
     formato VARCHAR(15),
     claveeditorial SMALLINT(6),
@@ -63,7 +63,7 @@ CREATE TABLE ejemplar (
     clavelibro INT(11),
     numeroorden SMALLINT(6),
     edicion SMALLINT(6),
-    ubicacion VARCHAR(15),
+    ubicacion CHAR(10),
     categoria CHAR(1),
     FOREIGN KEY (clavelibro)
         REFERENCES libro (clavelibro)
@@ -75,7 +75,7 @@ CREATE TABLE prestamo (
     numeroorden SMALLINT(6),
     fecha_prestamo DATE,
     fecha_devolucion DATE,
-    notas BLOB,
+    notas TEXT,
     FOREIGN KEY (clavesocio)
         REFERENCES socio (clavesocio),
     FOREIGN KEY (claveejemplar)
