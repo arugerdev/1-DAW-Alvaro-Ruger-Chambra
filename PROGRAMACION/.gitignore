@@ -12,3 +12,6 @@ target/
 .springBeans
 .sts4-cache
 
+
+**/bin/
+**/doc/
